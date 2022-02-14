@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add CSS and JS to Thymeleaf</title>
+    <link th:href="@{/main.css}" rel="stylesheet" />
+
+</head>
+<body>
+<!---
+<div th:replace="fragments/navigation :: navbar"></div>
+    <link href="/static/main.css" rel="stylesheet" />
+    --->
+<nav>
+
+    <a th:href="@{'/'}">Product list</a>
+    <a th:href="@{'/shopping-cart'}">Shopping cart</a>
+    <a th:href="@{'/product-form'}">Product-form</a>
+
+</nav>
+
+<h2>Product List</h2>
+
+<div class="product-list">
+    <div class="product" th:each="product : ${productList}">
+        <div class="image-list">
+            <img th:if="${product.pathToImage != null}" th:src="@{'/images/'+${product.pathToImage}}">
+        </div>
+        <a th:href="@{'/product-detail/'+${product.getId()}}" ><h3 th:text="${product.getName()}"></h3> </a>
+        <a th:href="@{'/add-product-to-shopping-cart/'+${product.getId()}}"> <button>Add one</button> </a>
+    </div>
+</div>
+
+</body>
+</html>

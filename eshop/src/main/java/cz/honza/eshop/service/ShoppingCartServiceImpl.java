@@ -13,6 +13,7 @@ import org.springframework.web.context.annotation.SessionScope;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 @Service
 @SessionScope
@@ -71,5 +72,14 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
             orderHasProductRepository.save(orderHasProduct);
         }
         cart.clear();
+    }
+
+    @Override
+    public Integer totalPrice() {
+        Integer price = null;
+        if (!cart.isEmpty()){
+            price = cart.entrySet().stream().mapToInt(a->a.getKey().getPrice()*a.getValue()).sum();
+        }
+        return price;
     }
 }

@@ -13,4 +13,6 @@ public interface ShoppingCartService {
     Map<Product, Integer> getCart();
 
     void checkout();
+
+    Integer totalPrice();
 }

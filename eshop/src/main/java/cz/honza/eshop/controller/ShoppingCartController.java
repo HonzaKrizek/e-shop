@@ -15,9 +15,14 @@ public class ShoppingCartController {
         this.shoppingCartService = shoppingCartService;
     }
 
+    @GetMapping("/add-product-to-shopping-cart/{id}")
+    public String shoppingCartAddInProductList(@PathVariable Long id, Model model){
+        shoppingCartService.add(id);
+        return "redirect:/";
+    }
 
     @GetMapping("/shopping-cart-add/{id}")
-    public String shoppingCartAdd(@PathVariable Long id, Model model){
+    public String shoppingCartAddInShoppingCart(@PathVariable Long id, Model model){
         shoppingCartService.add(id);
         return "redirect:/shopping-cart";
     }
@@ -31,6 +36,16 @@ public class ShoppingCartController {
     @GetMapping("/shopping-cart")
     public String showShoppingCart(Model model){
         model.addAttribute("shoppingCart", shoppingCartService.getCart());
+        model.addAttribute("totalPrice", shoppingCartService.totalPrice());
         return "/shopping-cart";
     }
+
+    /*
+    @GetMapping("/shopping-cart")
+    public String showTotalPrice(Model model){
+        return "/shopping-cart";
+    }
+
+     */
+
 }

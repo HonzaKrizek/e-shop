@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add CSS and JS to Thymeleaf</title>
+    <link th:href="@{/main.css}" rel="stylesheet" />
+</head>
+<body>
+
+<nav>
+    <a th:href="@{'/'}">Product list</a>
+    <a th:href="@{'/shopping-cart'}">Shopping cart</a>
+    <a th:href="@{'/product-form'}">Product-form</a>
+</nav>
+
+<h1>Checkout!</h1>
+<div>
+    <p>Success.</p>
+</div>
+<div>
+    <a href="/">Product list</a>
+</div>
+
+</body>
+</html>

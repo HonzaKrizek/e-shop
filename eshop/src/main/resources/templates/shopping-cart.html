@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add CSS and JS to Thymeleaf</title>
+    <link th:href="@{/main.css}" rel="stylesheet" />
+</head>
+<body>
+<h2>Product List</h2>
+
+<nav>
+    <a th:href="@{'/'}">Product list</a>
+    <a th:href="@{'/shopping-cart'}">Shopping cart</a>
+    <a th:href="@{'/product-form'}">Product-form</a>
+</nav>
+
+<div>
+    <table>
+        <colgroup>
+            <col span="1" style="width: 60%;">
+            <col span="1" style="width: 20%;">
+            <col span="1" style="width: 20%;">
+        </colgroup>
+        <tbody>
+            <tr th:each="cartItem : ${shoppingCart.entrySet()}">
+                <td>
+                    <h3 th:text="${cartItem.getKey().getName()}"></h3>
+                </td>
+                <td>
+                    <a th:href="@{'/shopping-cart-add/'+${cartItem.getKey().getId()}}">+</a>
+                    <span th:text="${cartItem.getValue()}"></span>
+                    <a th:href="@{'/shopping-cart-remove/'+${cartItem.getKey().getId()}}">-</a>
+                </td>
+                <td>
+                    <h4 th:text="${cartItem.getKey().price}"></h4>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <p>Total price: <span th:text="${totalPrice}"></span></p>
+    </div>
+
+</div>
+
+<div>
+    <a th:href="@{checkout}"> <button>Checkout</button></a>
+</div>
+
+
+</body>
+</html>

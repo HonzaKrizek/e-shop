@@ -1,7 +1,6 @@
 package cz.honza.eshop.entyty;
 
 import lombok.Data;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -14,7 +13,21 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // generace automatického klíče
     private Long id;
 
+    @Column
     private String name;
+
+    @Column
+    private Integer price;
+
+    @Column(columnDefinition = "text")
+    private String description;
+
+    @Column
+    private String pathToImage;
+
+    //@Lob
+    //private byte[] image;
+
 
     @OneToMany(mappedBy = "id")
     private Set<OrderHasProduct> productInOrders;
