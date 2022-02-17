@@ -28,7 +28,18 @@ public class Product {
     //@Lob
     //private byte[] image;
 
+    @Enumerated(EnumType.STRING)
+    @Column(length = 30)
+    private TypeEnum type;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 30)
+    private SubtypeEnum subtype;
+
 
     @OneToMany(mappedBy = "id")
     private Set<OrderHasProduct> productInOrders;
+
+    @OneToMany(mappedBy = "id")
+    private Set<ProductHasReview> productHasReviews;
 }

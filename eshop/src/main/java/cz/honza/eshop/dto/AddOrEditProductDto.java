@@ -3,7 +3,6 @@ package cz.honza.eshop.dto;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.Column;
 
 @Data
 public class AddOrEditProductDto {
@@ -17,6 +16,8 @@ public class AddOrEditProductDto {
     private String description;
 
     private MultipartFile image;
+
+    private String subtype;
 
 
 }

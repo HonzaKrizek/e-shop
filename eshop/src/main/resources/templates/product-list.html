@@ -27,6 +27,7 @@
             <img th:if="${product.pathToImage != null}" th:src="@{'/images/'+${product.pathToImage}}">
         </div>
         <a th:href="@{'/product-detail/'+${product.getId()}}" ><h3 th:text="${product.getName()}"></h3> </a>
+        <p><span th:text="${product.price}"></span> Gold</p>
         <a th:href="@{'/add-product-to-shopping-cart/'+${product.getId()}}"> <button>Add one</button> </a>
     </div>
 </div>

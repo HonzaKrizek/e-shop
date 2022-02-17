@@ -40,12 +40,5 @@ public class ShoppingCartController {
         return "/shopping-cart";
     }
 
-    /*
-    @GetMapping("/shopping-cart")
-    public String showTotalPrice(Model model){
-        return "/shopping-cart";
-    }
-
-     */
 
 }

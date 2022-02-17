@@ -20,6 +20,12 @@
     <input type="text" th:field="*{price}" />
     <textarea th:field="*{description}"></textarea>
 
+    <select th:field="*{subtype}">
+        <option th:each="type : ${allTypes}"
+                th:value="${type}"
+                th:text="${type}"></option>
+    </select>
+
     <input type="file" th:field="*{image}" />
 
     <input type="submit"/>

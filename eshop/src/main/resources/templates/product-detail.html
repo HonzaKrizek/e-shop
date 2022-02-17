@@ -20,8 +20,29 @@
     <div class="image-detail">
         <img th:if="${product.pathToImage != null}" th:src="@{'/images/'+${product.pathToImage}}">
     </div>
-    <span>Price<p th:text="${product.price}"></p></span>
+    <p>Price: <span th:text="${product.price}"></span> Gold</p>
     <p th:text="${product.description}"></p>
+
+</div>
+<hr>
+<h4>Customer's product reviews</h4>
+<div>
+    <form action="#" th:action="@{'/review-process/'+${product.getId()}}" th:object="${review}" method="post">
+        <input type="text" th:field="*{nick}" placeholder="Nick"/>
+        <textarea th:field="*{evaluation}"></textarea>
+        <select th:field="*{rating}">
+            <option value="5">5</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+        </select>
+
+        <input type="submit"/>
+    </form>
+</div>
+<hr>
+<div>
 
 </div>
 </body>
