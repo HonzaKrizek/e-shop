@@ -1,6 +1,7 @@
 package cz.honza.eshop.controller;
 
 import cz.honza.eshop.service.ShoppingCartService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,11 +10,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class ShoppingCartController {
 
-    private final ShoppingCartService shoppingCartService;
+    @Autowired
+    private ShoppingCartService shoppingCartService;
 
-    public ShoppingCartController(ShoppingCartService shoppingCartService) {
-        this.shoppingCartService = shoppingCartService;
-    }
+
+    //public ShoppingCartController(ShoppingCartService shoppingCartService) {
+    //    this.shoppingCartService = shoppingCartService;
+    //}
 
     @GetMapping("/add-product-to-shopping-cart/{id}")
     public String shoppingCartAddInProductList(@PathVariable Long id, Model model){

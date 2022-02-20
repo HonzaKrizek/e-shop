@@ -7,6 +7,7 @@ import cz.honza.eshop.entyty.StateEnum;
 import cz.honza.eshop.repository.OrderHasProductRepository;
 import cz.honza.eshop.repository.OrderRepository;
 import cz.honza.eshop.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
 
@@ -19,12 +20,16 @@ import java.util.stream.Collectors;
 @SessionScope
 public class ShoppingCartServiceImpl implements ShoppingCartService {
 
-    private Map<Product, Integer> cart;
+    private Map<Product, Integer> cart = new HashMap<>();
 
-    private final ProductRepository productRepository;
-    private final OrderRepository orderRepository;
-    private final OrderHasProductRepository orderHasProductRepository;
+    @Autowired
+    private ProductRepository productRepository;
+    @Autowired
+    private OrderRepository orderRepository;
+    @Autowired
+    private OrderHasProductRepository orderHasProductRepository;
 
+    /*
     public ShoppingCartServiceImpl(ProductRepository productRepository, OrderRepository orderRepository, OrderHasProductRepository orderHasProductRepository) {
         this.productRepository = productRepository;
         this.orderRepository = orderRepository;
@@ -32,9 +37,14 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         cart = new HashMap<>();
     }
 
+     */
+
     @Override
     public void add(Long id) {
         Product product = productRepository.findById(id).orElseThrow(NoSuchElementException::new);
+        
+        //Když má Product lombok jenom anotaci @Data, tak vyskakuje StuckOverFlowError exception
+
         if (cart.containsKey(product)) {
             cart.replace(product, cart.get(product)+1);
         } else {

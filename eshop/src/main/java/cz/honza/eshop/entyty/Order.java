@@ -1,12 +1,15 @@
 package cz.honza.eshop.entyty;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity(name = "orderForm")
-@Data
+@Getter
+@Setter
 public class Order {
 
     @Id

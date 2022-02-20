@@ -21,6 +21,7 @@
         <img th:if="${product.pathToImage != null}" th:src="@{'/images/'+${product.pathToImage}}">
     </div>
     <p>Price: <span th:text="${product.price}"></span> Gold</p>
+    <p>Total rating: <span th:text="${ratingAverage}"></span></p>
     <p th:text="${product.description}"></p>
 
 </div>
@@ -43,7 +44,11 @@
 </div>
 <hr>
 <div>
-
+    <div th:each="rev : ${listOfReviews}">
+        <p>Nick: <span th:text="${rev.nick}"></span> - Rating: <span th:text="${rev.rating}"></span></p>
+        <p th:text="${rev.evaluation}"></p>
+        <hr>
+    </div>
 </div>
 </body>
 </html>

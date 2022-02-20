@@ -87,7 +87,8 @@ public class ProductController {
     public String showProductDetail(@PathVariable(required = false) Long id, Model model){
         model.addAttribute("product", productRepository.findById(id).get());
         model.addAttribute("review",new AddOrEditReviewDto());
-
+        model.addAttribute("listOfReviews",reviewRepository.findReviewByProductId(id));
+        model.addAttribute("ratingAverage",reviewRepository.findAverageOfRatingByProductId(id));
         return "product-detail";
     }
 
