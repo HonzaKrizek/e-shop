@@ -2,15 +2,15 @@ package cz.honza.eshop.entyty;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Data
-public class Adress {
+public class Address {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
@@ -24,4 +24,9 @@ public class Adress {
 
     @Column
     private String country;
+
+    @OneToMany(mappedBy = "id")
+    private Set<CustomerHasAddress> customerHasAddresses;
+
+
 }

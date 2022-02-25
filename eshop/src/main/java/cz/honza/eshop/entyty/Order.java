@@ -8,8 +8,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity(name = "orderForm")
-@Getter
-@Setter
+@Data
 public class Order {
 
     @Id
@@ -22,5 +21,8 @@ public class Order {
 
     @OneToMany(mappedBy = "id")
     private Set<OrderHasProduct> orderHasProducts;
+
+    @OneToMany(mappedBy = "id")
+    private Set<OrderHasCustomer> orderHasCustomers;
 
 }
